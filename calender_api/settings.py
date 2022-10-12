@@ -39,6 +39,7 @@ SECRET_KEY = 'django-insecure-y2wn986)2ll5@dwzfj)ya$7lx_99=46or6%%w00mmv%7x8zd+#
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = ['https://8000-simonmorten-calenderapi-jupvamuj9r8.ws-eu70.gitpod.io']
 
 
 # Application definition
@@ -53,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
 
-
+    'calender',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'calender_api.urls'
 
