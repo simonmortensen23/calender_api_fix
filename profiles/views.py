@@ -1,7 +1,9 @@
 from django.db.models import Count
 from rest_framework import generics, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from API.permissions import IsOwnerOrReadOnly
+from calender_api.permissions import IsOwnerOrReadOnly
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import Profile
 from profiles.serializers import ProfileSerializer
 

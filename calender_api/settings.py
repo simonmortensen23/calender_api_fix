@@ -39,7 +39,7 @@ SECRET_KEY = 'django-insecure-y2wn986)2ll5@dwzfj)ya$7lx_99=46or6%%w00mmv%7x8zd+#
 DEBUG = True
 
 ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = ['https://8000-simonmorten-calenderapi-jupvamuj9r8.ws-eu70.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-simonmorten-calenderapi-jupvamuj9r8.ws-eu71.gitpod.io']
 
 
 # Application definition
@@ -53,8 +53,10 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
 
     'calender',
+    'profiles',
 ]
 
 MIDDLEWARE = [
