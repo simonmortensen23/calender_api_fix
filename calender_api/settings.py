@@ -112,7 +112,6 @@ JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 
 REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'calender_api.serializers.CurrentUserSerializer'}
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
