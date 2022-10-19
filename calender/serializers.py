@@ -5,7 +5,6 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 class CalenderSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source = 'owner.profile.id')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
@@ -25,6 +24,6 @@ class CalenderSerializer(serializers.ModelSerializer):
     class Meta:
         model = CalenderPost
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id', 'created_at',
+            'id', 'owner', 'is_owner', 'created_at',
             'updated_at', 'title', 'task_info', 'due_date', 'status'
         ]
