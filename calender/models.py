@@ -13,6 +13,9 @@ class CalenderPost(models.Model):
         (IDLE, 'Idle'),
         (DONE, 'done')
     )
+    def validate_date(due_date):
+        if due_date < timezone.now().date():
+            raise ValidationError("Date cannot be in the past")
 
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,8 +23,10 @@ class CalenderPost(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     task_info = models.TextField(blank=True)
-    due_date = models.DateTimeField()
+    due_date = models.DateTimeField(validators=[validate_date])
     status = models.CharField(max_length=20, choices=TASK_STATUS, default=IN_PROGRESS)
+
+    
 
     class Meta:
         ordering = ['-created_at']
