@@ -9,7 +9,7 @@ from .serializers import CalenderSerializer
 # Create your views here.
 class CalenderList(generics.ListCreateAPIView):
     serializer_class = CalenderSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     queryset = CalenderPost.objects.all().order_by('-created_at')
 
     def perform_create(self, serializer):
