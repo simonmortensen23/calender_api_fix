@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.core.exceptions import ValidationError
+
 
 # Create your models here.
 class CalenderPost(models.Model):
@@ -13,9 +16,7 @@ class CalenderPost(models.Model):
         (IDLE, 'Idle'),
         (DONE, 'done')
     )
-    def validate_date(due_date):
-        if due_date < timezone.now().date():
-            raise ValidationError("Date cannot be in the past")
+   
 
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -23,10 +24,17 @@ class CalenderPost(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     task_info = models.TextField(blank=True)
-    due_date = models.DateTimeField(validators=[validate_date])
+    due_date = models.DateTimeField()
     status = models.CharField(max_length=20, choices=TASK_STATUS, default=IN_PROGRESS)
 
-    
+    def validate_date(due_date):
+        if due_date < timezone.now():
+            raise ValidationError("Date cannot be in the past")
+    due_date = models.DateTimeField(
+        null=True,
+        blank=True,
+        validators=[validate_date]
+    )
 
     class Meta:
         ordering = ['-created_at']
