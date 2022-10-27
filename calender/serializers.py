@@ -25,5 +25,5 @@ class CalenderSerializer(serializers.ModelSerializer):
         model = CalenderPost
         fields = [
             'id', 'owner', 'is_owner', 'created_at',
-            'updated_at', 'title', 'task_info', 'due_date', 'status'
+            'updated_at', 'title', 'task_info', 'due_date', 'task_status'
         ]
