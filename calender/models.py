@@ -7,10 +7,7 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 class CalenderPost(models.Model):
 
-    IN_PROGRESS = 'in progress'
-    IDLE = 'idle'
-    DONE = 'done'
-
+    
     TASK_STATUS = (
         (IN_PROGRESS, 'In progress'),
         (IDLE, 'Idle'),
@@ -25,7 +22,7 @@ class CalenderPost(models.Model):
     title = models.CharField(max_length=255)
     task_info = models.TextField(blank=True)
     due_date = models.DateTimeField()
-    status = models.CharField(max_length=20, choices=TASK_STATUS, default=IN_PROGRESS)
+    status = models.CharField(max_length=20, choices=TASK_STATUS)
 
     def validate_date(due_date):
         if due_date < timezone.now():
