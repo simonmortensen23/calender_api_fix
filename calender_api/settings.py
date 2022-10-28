@@ -85,6 +85,7 @@ INSTALLED_APPS = [
 
     'calender',
     'profiles',
+    'task_member'
 ]
 
 SITE_ID = 1
