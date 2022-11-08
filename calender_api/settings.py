@@ -58,7 +58,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 CORS_ALLOW_CREDENTIALS = True
 JWT_AUTH_SAMESITE = 'None'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-simonmorten-calenderapi-jupvamuj9r8.ws-eu72.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-simonmorten-calenderapi-jupvamuj9r8.ws-eu74.gitpod.io']
 
 
 # Application definition
