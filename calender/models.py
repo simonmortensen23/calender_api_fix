@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from task_member.models import TaskMember
-from django.utils import timezone
+from datetime import date
 from django.core.exceptions import ValidationError
 
 
@@ -21,7 +21,7 @@ class CalenderPost(models.Model):
     members = models.ManyToManyField(User, through=TaskMember)
 
     def validate_date(due_date):
-        if due_date < timezone.now():
+        if due_date < date.today():
             raise ValidationError("Date cannot be in the past")
     due_date = models.DateField(
         validators=[validate_date]
