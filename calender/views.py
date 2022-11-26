@@ -74,8 +74,8 @@ class AddTaskMember(generics.CreateAPIView):
     allowed_methods = ['POST']
 
     def perform_create(self, serializer):
-        task_id = serializer.data['task']
         username = serializer.data['username']
+        task_id = self.kwargs['pk']
 
         # small timeout (avoid username detection by primitive bots)
         time.sleep(0.2)

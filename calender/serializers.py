@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from calender.models import CalenderPost
 from task_member.models import TaskMember
-from task_member.serializers import MemberSerializer, TaskMemberSerializer
+from task_member.serializers import MemberSerializer
 from django.contrib.humanize.templatetags.humanize import naturaltime
 
 

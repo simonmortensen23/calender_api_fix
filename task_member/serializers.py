@@ -14,17 +14,11 @@ class MemberSerializer(serializers.ModelSerializer):
         fields = ['username']
 
 
-class TaskMemberSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TaskMember
-        fields = ['user', 'task', 'access_level']
-
-
 class ChangeTaskMemberShipSerializer(serializers.ModelSerializer):
     username = serializers.SlugField(max_length=50, min_length=1, allow_blank=False, source='task_member.user.username')
 
     class Meta:
         model = TaskMember
-        fields = ['username', 'task']
+        fields = ['username']
 
 
