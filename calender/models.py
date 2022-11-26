@@ -17,16 +17,13 @@ class CalenderPost(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     task_info = models.TextField(blank=True)
-    due_date = models.DateTimeField()
     task_status = models.CharField(max_length=1, choices=TaskStatus.choices, default=TaskStatus.IDLE)
     members = models.ManyToManyField(User, through=TaskMember)
 
     def validate_date(due_date):
         if due_date < timezone.now():
             raise ValidationError("Date cannot be in the past")
-    due_date = models.DateTimeField(
-        null=True,
-        blank=True,
+    due_date = models.DateField(
         validators=[validate_date]
     )
 
