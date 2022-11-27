@@ -31,26 +31,24 @@ class CalenderList(generics.ListCreateAPIView):
 
 
     def perform_create(self, serializer):
-        print("0")
         # find user from request
         user = self.request.user
-        print("1")
+
         # ensure user is not anonymous
         if user.id is None:
             return serializer.ValidationError('You are not authorized')
-        print("2")
+
         # save new task
         task = serializer.save()
-        print("3")
+
         # add owner membership between new task and user
         task_member = TaskMember(
             access_level=TaskMember.Access.OWNER,
             user=user,
             task=task
         )
-        print("4")
         task_member.save()
-        print("5")
+
 
 
 
