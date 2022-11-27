@@ -106,7 +106,7 @@ class AddTaskMember(generics.CreateAPIView):
         return JsonResponse({"success": True})
 
 
-class DeleteTaskMember(generics.DestroyAPIView):
+class DeleteTaskMember(generics.CreateAPIView):
     permission_classes = [IsAuthenticated, IsOwner]
     serializer_class = ChangeTaskMemberShipSerializer
     queryset = CalenderPost.objects.all()
