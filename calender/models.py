@@ -9,9 +9,9 @@ from django.core.exceptions import ValidationError
 class CalenderPost(models.Model):
 
     class TaskStatus(models.TextChoices):    
-        IN_PROGRESS = 'A', 'In progress',
-        IDLE = 'B', 'Idle',
-        DONE = 'C', 'Done'
+        IN_PROGRESS = 'IN PROGRESS', 'In progress',
+        IDLE = 'IDLE', 'Idle',
+        DONE = 'DONE', 'Done'
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
