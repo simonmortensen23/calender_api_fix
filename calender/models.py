@@ -17,7 +17,7 @@ class CalenderPost(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     task_info = models.TextField(blank=True)
-    task_status = models.CharField(max_length=1, choices=TaskStatus.choices, default=TaskStatus.IDLE)
+    task_status = models.CharField(max_length=20, choices=TaskStatus.choices, default=TaskStatus.IDLE)
     members = models.ManyToManyField(User, through=TaskMember)
 
     def validate_date(due_date):
