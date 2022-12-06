@@ -106,19 +106,17 @@ class AddTaskMember(generics.CreateAPIView):
         return JsonResponse({"success": True})
 
 
-class DeleteTaskMember(generics.DestroyAPIView):
+class DeleteTaskMember(generics.CreateAPIView):
     permission_classes = [IsAuthenticated, IsOwner]
     serializer_class = ChangeTaskMemberShipSerializer
     queryset = CalenderPost.objects.all()
-    allowed_methods = ['DELETE']
+    allowed_methods = ['POST']
 
-    def delete(self, request):
-        task_id = self.kwargs['pk']
-        # TODO: test if works, if not try self.request
-        username = request.data.get('username')
+    def create(self, instance, pk):
+        username = self.request.data.get('username')
         print(f"""
             ******* DELETE TASK MEMBER ********
-            task_id: {task_id}
+            task_id: {pk}
             username: {username}
             ***********************************
         """)
@@ -133,7 +131,7 @@ class DeleteTaskMember(generics.DestroyAPIView):
             raise serializers.ValidationError('Unable to remove member, because user does not exist')
 
         # retrieve task_id
-        task = CalenderPost.objects.filter(id=task_id).first()
+        task = CalenderPost.objects.filter(id=pk).first()
         if task is None:
             # TODO: return some kind of 404 error
             raise serializers.ValidationError('Task does not exist')
