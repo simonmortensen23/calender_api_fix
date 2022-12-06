@@ -112,8 +112,16 @@ class DeleteTaskMember(generics.DestroyAPIView):
     queryset = CalenderPost.objects.all()
     allowed_methods = ['DELETE']
 
-    def delete(self, instance, pk):
-        username = self.request.data.get('username')
+    def delete(self, request):
+        task_id = self.kwargs['pk']
+        # TODO: test if works, if not try self.request
+        username = request.data.get('username')
+        print(f"""
+            ******* DELETE TASK MEMBER ********
+            task_id: {task_id}
+            username: {username}
+            ***********************************
+        """)
 
         # small timeout (avoid username detection by primitive bots)
         time.sleep(0.2)
@@ -125,7 +133,7 @@ class DeleteTaskMember(generics.DestroyAPIView):
             raise serializers.ValidationError('Unable to remove member, because user does not exist')
 
         # retrieve task_id
-        task = CalenderPost.objects.filter(id=pk).first()
+        task = CalenderPost.objects.filter(id=task_id).first()
         if task is None:
             # TODO: return some kind of 404 error
             raise serializers.ValidationError('Task does not exist')
