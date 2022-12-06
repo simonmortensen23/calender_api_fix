@@ -106,13 +106,13 @@ class AddTaskMember(generics.CreateAPIView):
         return JsonResponse({"success": True})
 
 
-class DeleteTaskMember(generics.CreateAPIView):
+class DeleteTaskMember(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated, IsOwner]
     serializer_class = ChangeTaskMemberShipSerializer
     queryset = CalenderPost.objects.all()
-    allowed_methods = ['POST']
+    allowed_methods = ['DELETE']
 
-    def create(self, instance, pk):
+    def delete(self, instance, pk):
         username = self.request.data.get('username')
 
         # small timeout (avoid username detection by primitive bots)

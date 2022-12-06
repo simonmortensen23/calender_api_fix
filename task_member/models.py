@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 
 class TaskMember(models.Model):
     class Access(models.TextChoices):    
-        OWNER = 'A', 'Owner',
-        MEMBER = 'B', 'Member',
+        OWNER = 'OWNER', 'Owner',
+        MEMBER = 'MEMBER', 'Member',
 
     task = models.ForeignKey('calender.CalenderPost', blank=True, on_delete=models.DO_NOTHING, related_name='tasks')
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='task_members')
-    access_level = models.CharField(max_length=1, choices=Access.choices, default=Access.MEMBER)
+    access_level = models.CharField(max_length=20, choices=Access.choices, default=Access.MEMBER)
 
     class Meta:
         unique_together = ['task', 'user']
