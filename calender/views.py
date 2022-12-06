@@ -92,7 +92,6 @@ class AddTaskMember(generics.CreateAPIView):
         if user is None:
             # TODO: return some kind of 400 error
             raise serializers.ValidationError('Unable to add member, because user does not exist')
-        
 
         # ensure user not task member
         if user in task.members.all():
@@ -114,12 +113,6 @@ class DeleteTaskMember(generics.CreateAPIView):
 
     def create(self, instance, pk):
         username = self.request.data.get('username')
-        print(f"""
-            ******* DELETE TASK MEMBER ********
-            task_id: {pk}
-            username: {username}
-            ***********************************
-        """)
 
         # small timeout (avoid username detection by primitive bots)
         time.sleep(0.2)
