@@ -7,7 +7,7 @@ class TaskMember(models.Model):
         OWNER = 'OWNER', 'Owner',
         MEMBER = 'MEMBER', 'Member',
 
-    task = models.ForeignKey('calender.CalenderPost', blank=True, on_delete=models.DO_NOTHING, related_name='tasks')
+    task = models.ForeignKey('calender.CalenderPost', blank=True, on_delete=models.CASCADE, related_name='tasks')
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='task_members')
     access_level = models.CharField(max_length=20, choices=Access.choices, default=Access.MEMBER)
 
