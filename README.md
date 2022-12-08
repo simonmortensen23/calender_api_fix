@@ -12,9 +12,31 @@
 
 ## Introduction
 
+Task Planner is the perfect app for planning day to day chores or smaller tasks. With Task Planner the users has the ability to share their tasks with family, friends or co-workers and leave small task notes, due date and progress status for the others to see.
+
+This repository is the backend of the application using the Django REST Framework(DRF) holding the API database for the front end part of the application.
+
 ## Testing
 
+### Validator Testing
+- I ran all the apps of the API through pycodestyle and fixed the missing white lines, whitespaces and too long lines.
+
+### Manual Testing
+- Manual Tests were carried out for the url paths and CRUD functionalities and shown in a table
+
+### CRUD Testing
+- Table was made to check a user could Create, Read, Update, Delete
+- I used a key in the table 
+    - LI meaning the user was logged in, and so could Create, and read.
+    - LO meaning the user was not logged in and so could only read.
+    - LI/O meaning the user was logged in and the owner so had full CRUD functionality.
+ ![CRUDFE](https://user-images.githubusercontent.com/43667190/206542441-2c2b89d4-012a-496d-9033-3f34cfd8ce56.PNG)
+
+
 ## Bugs
+
+### Unfixed
+- None known
 
 ## Technologies
 ### Languages
