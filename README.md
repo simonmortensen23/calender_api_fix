@@ -4,7 +4,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Technologies](#technologies used)
+- [Technologies](#technologies)
 - [Bugs](#bugs)
 - [Testing](#testing)
 - [Deployment](#deployment)
@@ -16,7 +16,7 @@
 
 ## Bugs
 
-## Technologies Used
+## Technologies
 ### Languages
  - Python - Django REST framework
 ### Frameworks, libraries, and Programs
