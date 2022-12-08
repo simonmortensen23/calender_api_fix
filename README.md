@@ -96,3 +96,31 @@ class CurrentUserSerializer(UserDetailsSerializer):
 16. Run the migrations for database again: python manage.py migrate
 17. Update the requirements file with the following terminal command: pip freeze > requirements.txt
 18. Make sure to save all files, add and commit followed by pushing to Github.
+
+### Deployment to ElephantSQL and Render
+1. This project was initially deployed to Heroku but due to changes it was moved to ElephantSQL and Render
+2. Create new instance on ElephantSQL
+3. Set name to event_api
+4. Confirmed by pressing "Create Instance"
+5. Skipped migrating databases as it had no important data stored
+6. Created build.sh file in API project
+7. Pasted install code into file:
+ - set -o errexit
+ - pip install -r requirements.txt
+ - python manage.py makemigrations && python manage.py migrate
+8. Deleted Procfile as Render doesn't need it
+9. Added, comitted and pushed
+10. Clicked on New + button and chose webservice 
+11. Connected with calender_api_fix respository
+12. In settings I set the environment to Python3 and chose main branch
+13. Set build command to: ./build.sh
+14. Set start command to:  gunicorn calender_api.wsgi:application
+15. Under the Environment tab I chose the advanced option
+16. Added Environment Variable and the key: WEB_CURRENCY, value 4
+17. Copy and pasted env.py content into a Secret File and removed DEV lines
+18. Set project to autodeployment. 
+
+## Credits
+ - The code institute moments project was used as a guideline for the API and CSS. 
+## Acknowledgements
+ - My friend Nikolaj who helped me throughout this project.
