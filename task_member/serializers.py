@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import TaskMember
 from django.contrib.auth.models import User
 
+
 class MemberSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField()
 
@@ -15,10 +16,10 @@ class MemberSerializer(serializers.ModelSerializer):
 
 
 class ChangeTaskMemberShipSerializer(serializers.ModelSerializer):
-    username = serializers.SlugField(max_length=50, min_length=1, allow_blank=False, source='task_member.user.username')
+    username = serializers.SlugField(max_length=50,
+                                     min_length=1, allow_blank=False,
+                                     source='task_member.user.username')
 
     class Meta:
         model = TaskMember
         fields = ['username']
-
-

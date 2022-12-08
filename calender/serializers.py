@@ -11,10 +11,8 @@ class CalenderSerializer(serializers.ModelSerializer):
     updated_at = serializers.SerializerMethodField()
     members = MemberSerializer(read_only=True, many=True)
 
-
     def get_membership(self, obj):
         request = self.context['request']
-        
         # get member ship of user
         my_memberships = TaskMember.objects.filter(
             task=obj,
@@ -37,10 +35,9 @@ class CalenderSerializer(serializers.ModelSerializer):
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
-    
+
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
-
 
     class Meta:
         model = CalenderPost

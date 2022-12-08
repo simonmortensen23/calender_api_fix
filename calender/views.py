@@ -12,6 +12,7 @@ from django.http import JsonResponse, HttpResponse
 import time
 from rest_framework import serializers
 
+
 # Create your views here.
 class CalenderList(generics.ListCreateAPIView):
     serializer_class = CalenderSerializer
@@ -28,7 +29,6 @@ class CalenderList(generics.ListCreateAPIView):
 
         # return tasks
         return tasks
-
 
     def perform_create(self, serializer):
         # find user from request
@@ -48,8 +48,6 @@ class CalenderList(generics.ListCreateAPIView):
             task=task
         )
         task_member.save()
-
-
 
 
 class CalenderDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -91,12 +89,13 @@ class AddTaskMember(generics.CreateAPIView):
         user = User.objects.filter(username=username).first()
         if user is None:
             # TODO: return some kind of 400 error
-            raise serializers.ValidationError('Unable to add member, because user does not exist')
+            raise serializers.ValidationError(
+                'Unable to add member, user does not exist')
 
         # ensure user not task member
         if user in task.members.all():
-            raise serializers.ValidationError('Unable to add member, because user is already member')
-
+            raise serializers.ValidationError(
+                'Unable to add member, because user is already member')
 
         # add user as task member
         new_membership = TaskMember(task=task, user=user)
@@ -121,19 +120,21 @@ class DeleteTaskMember(generics.CreateAPIView):
         user = User.objects.filter(username=username).first()
         if user is None:
             # TODO: return some kind of 400 error
-            raise serializers.ValidationError('Unable to remove member, because user does not exist')
+            raise serializers.ValidationError(
+                'Unable to remove member, because user does not exist')
 
         # retrieve task_id
         task = CalenderPost.objects.filter(id=pk).first()
         if task is None:
             # TODO: return some kind of 404 error
             raise serializers.ValidationError('Task does not exist')
-        
+
         # find membership and ensure it's existence
         membership = TaskMember.objects.filter(task=task, user=user).first()
         if membership is None:
-            raise serializers.ValidationError('Unable to remove member, because user is not member')
-        
+            raise serializers.ValidationError(
+                'Unable to remove member, because user is not member')
+
         # delete membership
         membership.delete()
 
