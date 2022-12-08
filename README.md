@@ -4,10 +4,8 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [User Stories](#ux)
-- [Design](#design)
-- [Features](#features)
-- [Technologies](#technologies)
+- [Technologies](#technologies used)
+- [Bugs](#bugs)
 - [Testing](#testing)
 - [Deployment](#deployment)
 - [Credits](#credits)
