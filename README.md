@@ -24,6 +24,11 @@ This repository is the backend of the application using the Django REST Framewor
 ### Manual Testing
 - Manual Tests were carried out for the url paths and CRUD functionalities and shown in a table
 
+### URL Testing
+
+![urldev](https://user-images.githubusercontent.com/43667190/206684580-f4d421d7-b48d-4e2d-8898-53e6344d01c7.PNG)
+
+
 ### CRUD Testing
 - Table was made to check a user could Create, Read, Update, Delete
 - I used a key in the table 
